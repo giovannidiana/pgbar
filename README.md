@@ -11,5 +11,11 @@ This repository contains:
 * [armadillo](http://arma.sourceforge.net/) (version >11)
 * [jsoncpp](https://github.com/open-source-parsers/jsoncpp)
 
+## Install
+The main software for data analysis is written in `C++`. To compile it you need a C++ compiler in your system (e.g. g++ or clang).
+Once the necessary dependencies are present, the software can then be installed by simply run
+```
+make
+```
 
 
