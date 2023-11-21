@@ -58,8 +58,6 @@ void Trajectory::simulate(gsl_rng* rng, const param& par, const constpar *consta
 
     B(0) = gsl_ran_gaussian(rng,constants->bm_sigma);
     burst(0) = 0;
-    cout<<"rate0 = "<<rate[0]<<endl;
-    cout<<"rate1 = "<<rate[1]<<endl;
     S(0) = gsl_ran_poisson(rng,par.r0*dt);
     C(0) = par.c0 + par.A*S(0);
     Y(0) = C(0)+B(0)+gsl_ran_gaussian(rng,sqrt(par.sigma2));
@@ -68,9 +66,7 @@ void Trajectory::simulate(gsl_rng* rng, const param& par, const constpar *consta
         {par.wbb[1]*dt, 1-par.wbb[1]*dt}};
 
     for(unsigned int t=1;t<size;t++){
-        //burst(t) = (gsl_rng_uniform(rng) < W[burst(t-1)][0]) ? 0 : 1;
-        burst(t) = (t>0.2*size && t<0.8*size) ? 1 :0 ;
-
+        burst(t) = (gsl_rng_uniform(rng) < W[burst(t-1)][0]) ? 0 : 1;
         B(t)     = B(t-1)+gsl_ran_gaussian(rng,constants->bm_sigma*sqrt(dt)); 
         S(t)     = gsl_ran_poisson(rng,rate[burst(t)]);
         C(t)     = (t>1) ? C(t-2)*par.omega + C(t-1)*par.gamma + par.A*S(t) : C(t-1)*par.gamma + par.A*S(t);
@@ -484,6 +480,15 @@ void SMC::sampleParameters(const param &pin, param &pout, Trajectory &traj, repa
     if(!constants->SAMPLE_KINETICS) sampled_variable=sampled_variable % 2;
     unsigned int var_selec[4] = {0,0,0,0}; 
     var_selec[sampled_variable] = 1;
+
+    if(constants->KNOWN_SPIKES){
+        var_selec[0]=1;
+        var_selec[1]=1;
+        if(constants->SAMPLE_KINETICS){
+            var_selec[2]=1;
+            var_selec[3]=1;
+        }
+    }
 
     // Sampling c0 with positivity constraint
     double c0_test   = pin.c0         + var_selec[0]*gsl_ran_gaussian(rng,constants->c0_proposal_sd);
