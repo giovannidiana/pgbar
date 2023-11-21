@@ -13,9 +13,66 @@ This repository contains:
 
 ## Install
 The main software for data analysis is written in `C++`. To compile it you need a C++ compiler in your system (e.g. g++ or clang).
-Once the necessary dependencies are present, the software can then be installed by simply run
+Once the necessary dependencies are present, the software can then be installed by simply run `make` from the command line.
+
+
+## Getting started
+
+### Settings 
+In order to run the inference, the user must provide a JSON file specifying the settings required by the algorithm such as the prior distributions of model parameters such as peak response, rise and decay time constants. The file [constants/constants_template.json](constants/constants_template.json) provides a template:
+
 ```
-make
+{
+    "data":{
+        "sampling_frequency":20
+    },
+
+    "AR":{
+        "p":2
+    },
+
+    "BM":{
+        "bm_sigma":1e-3
+    },
+
+    "priors":{
+        "rise time":50,
+        "rise_time_sd":5,
+        "decay time":1500.0,
+        "decay_time_sd":2,
+        "Amax_prior_mean": 1.0,
+        "Amax_prior_sd": 0.2,
+        "alpha rate 0": 1,
+        "beta rate 0": 20,
+        "alpha rate 1":10,
+        "beta rate 1": 10,
+        "c0_prior_sd": 1,
+        "alpha w01": 10,
+        "beta w01": 100,
+        "alpha w10": 10,
+        "beta w10": 100,
+        "alpha sigma2": 2,
+        "beta sigma2": 2
+    },
+
+    "proposals":{
+        "c0_proposal_sd":0.05,
+        "Amax_proposal_sd":0.05,
+        "decay_time_proposal_sd":10,
+        "rise_time_proposal_sd":1
+    },
+
+    "MCMC":{
+        "seed":2,
+        "niter":200,
+        "nparticles":500,
+        "SAMPLE_KINETICS":1,
+        "SAMPLE_SPIKES":1,
+        "MOVE_SPIKES":1,
+        "SAMPLE_PARAMETERS":1
+    }
+}
 ```
+
 
 
