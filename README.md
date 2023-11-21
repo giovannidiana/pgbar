@@ -74,5 +74,5 @@ In order to run the inference, the user must provide a JSON file specifying the 
 }
 ```
 
-
+### Analysis of $\Delta F/F$
 
