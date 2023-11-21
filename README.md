@@ -1,4 +1,4 @@
-# BARSMC: Accurate spike inference using sequential Monte Carlo on bursting generative model
+# PGBAR: Accurate spike inference using sequential Monte Carlo on bursting generative model
 
 This repository contains:
 
