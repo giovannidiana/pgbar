@@ -6,4 +6,10 @@ This repository contains:
 - Linescan data from cerebellar granule cells (soma and bouton recordings)
 - Visualization tools running on the browser
 
+## Dependencies
+* [GNU Scientific Libraries](https://www.gnu.org/software/gsl/)
+* [armadillo](http://arma.sourceforge.net/) (version >11)
+* [jsoncpp](https://github.com/open-source-parsers/jsoncpp)
+
+
 
