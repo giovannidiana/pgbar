@@ -116,7 +116,9 @@ The main program to analyze $\Delta F/F$ traces is in `bin/analyze_data`
 
 **--prior [FILE]**
 
-> File specifying parameters of the prior distributions. 
+> Text file specifying parameters of the prior distributions with format 
+| --- |---|---|
+| ciao | bla| uno |
 
 **--rng_seed [INT]**
 
@@ -126,3 +128,6 @@ The main program to analyze $\Delta F/F$ traces is in `bin/analyze_data`
 
 > uses data from previous run stored in the previous analysis
 
+**--ground_truth [FILE]**
+
+> A file specifying the ground truth spikes as a single column with a number of rows matching the number of time steps in the main data file. This can be used to train parameters and update their priors.
