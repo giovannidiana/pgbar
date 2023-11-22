@@ -8,7 +8,8 @@ bin/analyze_data --data_file=data/soma/LineScan-11252022-0851-005_0/LineScan-112
 				 --output_folder=test \
 				 --column=1 \
 				 --tag=test \
-				 --niter=1000
+                 --prior=pipelines/prior_from_single_0.dat \
+				 --niter=200 
 
 
 ### (2) Extraction of statistical summaries

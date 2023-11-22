@@ -41,7 +41,7 @@
     "MCMC":{
         "seed":3,
         "niter":1000,
-        "nparticles":2000,
+        "nparticles":500,
         "SAMPLE_KINETICS":1,
         "SAMPLE_SPIKES":1,
         "MOVE_SPIKES":1,

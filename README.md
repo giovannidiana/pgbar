@@ -207,5 +207,4 @@ Here is an example of pipeline combining spike inference, summary and visualizat
     which generates the file `summary_test.json`
 
 3. Finally we can import this JSON file through the javascript app
-
-```
+![alt text](https://github.com/giovannidiana/pgbar/blob/main/docs/bits/test_results.png)
