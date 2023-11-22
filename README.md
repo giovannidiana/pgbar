@@ -116,11 +116,19 @@ The main program to analyze $\Delta F/F$ traces is in `bin/analyze_data`
 
 **--prior [FILE]**
 
-> Text file specifying parameters of the prior distributions with format 
+> Text file specifying parameters of the prior distributions with predefined order. Each prior requires two hyperparameters which can be specified in the prior file as in the following example:
 >
 >| | | |
 >|---|---|---|
->| ciao | bla| uno |
+>|Amax| 0.16 | 0.009 |
+>|c0| 0 |1e-4|
+>|decay_time| 80| 5|
+>|rise_time| 5.09| 1.65|
+>|sigma2| 308.5| 0.57|
+>|r0| 1| 20|
+>|r1| 120| 4|
+>|w01 |10 |100|
+>|w10 10| 100|
 
 **--rng_seed [INT]**
 
