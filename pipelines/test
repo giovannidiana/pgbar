@@ -14,12 +14,12 @@ bin/analyze_data --data_file=data/soma/LineScan-11252022-0851-005_0/LineScan-112
 
 ### (2) Extraction of statistical summaries
 rargs=(
-    test                                                                                      ## output folder
-    data/soma/LineScan-11252022-0851-005_0/LineScan-11252022-0851-005_0_data_poisson.dat \    ## dF/F
-    1 \                                                                                       ## column index
-    test \                                                                                    ## tag used
-    data/soma/LineScan-11252022-0851-005_0/stimtimes_poisson.dat \                            ## ground truth stimulations (if known)
-    20                                                                                        ## last samples to consider
+    test                                                                                   ## output folder
+    data/soma/LineScan-11252022-0851-005_0/LineScan-11252022-0851-005_0_data_poisson.dat   ## dF/F
+    1                                                                                      ## column index
+    test                                                                                   ## tag used
+    data/soma/LineScan-11252022-0851-005_0/stimtimes_poisson.dat                           ## ground truth stimulations (if known)
+    20                                                                                     ## last samples to consider
 )
 
 Rscript webtools/SMC_make_summary.R ${rargs[@]}

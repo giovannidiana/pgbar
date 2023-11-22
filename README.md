@@ -187,18 +187,19 @@ Here is an example of pipeline combining spike inference, summary and visualizat
                      --output_folder=test \
                      --column=1 \
                      --tag=test \
+                     --prior=pipelines/prior_from_single_0.dat \
                      --niter=1000
     ```
 2. Second we obtain the summary statistics from the posterior samples
 
     ```
     rargs=(
-        test                                                                                      ## output folder
-        data/soma/LineScan-11252022-0851-005_0/LineScan-11252022-0851-005_0_data_poisson.dat \    ## dF/F
-        1 \                                                                                       ## column index
-        test \                                                                                    ## tag used
-        data/soma/LineScan-11252022-0851-005_0/stimtimes_poisson.dat \                            ## ground truth stimulations (if known)
-        20                                                                                        ## last samples to consider
+        test                                                                                   ## output folder
+        data/soma/LineScan-11252022-0851-005_0/LineScan-11252022-0851-005_0_data_poisson.dat   ## dF/F
+        1                                                                                      ## column index
+        test                                                                                   ## tag used
+        data/soma/LineScan-11252022-0851-005_0/stimtimes_poisson.dat                           ## ground truth stimulations (if known)
+        20                                                                                     ## last samples to consider
     )
 
     Rscript webtools/SMC_make_summary.R ${rargs[@]}
