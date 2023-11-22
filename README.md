@@ -142,8 +142,14 @@ The main program to analyze $\Delta F/F$ traces is in `bin/analyze_data`
 
 > A file specifying the ground truth spikes as a single column with a number of rows matching the number of time steps in the main data file. This can be used to train parameters and update their priors.
 
+### Output files
+PGBAR generates samples of the autoregressive model parameters and spike counts from the full posterior distribution. These samples are stored inside the specified output folder in CSV format 
+- `OUTPUT_FOLDER/param_samples_TAG.dat` 
+- `OUTPUT_FOLDER/traj_samples_TAG.dat`
+Note that samples of bursting state, baseline, spike counts and calcium level over time are chained in the file `traj_samples*` with the `index` column labeline each sample.
+
 ## Available data
-The folder `data/` contains linescan recordings of somas and boutons and it is organized as
+The folder `data/` contains linescan recordings of somas and boutons with single and poisson stimulation protocols. The folder is organized as follows:
 ```
 data
 ├── bouton
@@ -158,3 +164,8 @@ data
         └── stimtimes_STIM.dat
     ...
 ```
+Each experiment folder is labeled as `LineScan-XXX` and contains a data file for each stimulation (single and poisson). The first column of each data file is the timestamp vector and the subsequent columns are the $\Delta F/F$ for all trials of the same soma or bouton. The file `stimtimes_STIM.dat` contains the stimulation time points in seconds while the file `stimtimes_STIM_counts.dat` is a binary vector with same length as the time steps of the recordings where the 1's matching the stimulation times.
+
+
+## Visualization tools
+The html file `webtools/rInspectSamples.html` allows to visualize summary 
