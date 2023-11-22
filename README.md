@@ -84,7 +84,6 @@ The main program to analyze $\Delta F/F$ traces is in `bin/analyze_data`
                              --output_folder=<FOLDER> \
                              --column=<INT> \
                              --tag=<STRING> \
-                             --prior=<FILE> \
                              --niter=<INT> [OPTIONS]
 
 ### Required input
