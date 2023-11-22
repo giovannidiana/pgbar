@@ -76,3 +76,8 @@ In order to run the inference, the user must provide a JSON file specifying the 
 
 ### Analysis of $\Delta F/F$
 
+The command to run the main analysis software is
+```
+
+```
+
