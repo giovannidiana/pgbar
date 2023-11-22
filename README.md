@@ -74,18 +74,59 @@ In order to run the inference, the user must provide a JSON file specifying the 
 }
 ```
 
-### Analysis of $\Delta F/F$
-            $sampler --data_file=$datafile  \
-                     --constants_file=$constants \
-                     --output_folder=$folder \
-                     --column=$col \
-                     --tag=$tag \
-                     --prior=$prior \
-                     --rng_seed=233 \
-                     --niter=200 &
+## Running PGBAR
 
-The command to run the main analysis software is
-```
+The main program to analyze $\Delta F/F$ traces is in `bin/analyze_data`
+
+### Synopsis
+            bin/analyze_data --data_file=<FILE>  \
+                             --constants_file=<FILE> \
+                             --output_folder=<FOLDER> \
+                             --column=<INT> \
+                             --tag=<STRING> \
+                             --prior=<FILE> \
+                             --rng_seed=<INT> \
+                             --niter=<INT> &
+
+### Required input
+**--data_file [FILE]**
+
+> $\Delta F/F$ file in text format. The first column should be time, and the following columns are different time series (e.g. trials or cells).
+
+**--constants_file [FILE]**
+
+> setting file in JSON format. See `constants/constants_template.json` for an example
+
+**--output_folder [FOLDER]**
+
+> output folder - being created if not already existing 
+
+**--column [INT]**
+
+> 0-based column index in the data file corresponding to the time series to analyze. Column 0 in the data file is expected to be the time index. Column 1 is the first trace, column 2 is the second trace etc.
+
+**--tag [STRING]**
+
+> suffix to add to the result files
+
+### Optional input
+
+**--prior [FILE]**
+
+> File specifying parameters of the prior distributions. 
+
+**--rng_seed [INT]**
+
+> random seed
+
+**--niter [INT]**
+
+> number of iterations of the particle Gibbs
+
+**--continue**
+
+> uses data from previous run stored in the previous analysis
+
 
 ```
 
