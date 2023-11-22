@@ -75,6 +75,14 @@ In order to run the inference, the user must provide a JSON file specifying the 
 ```
 
 ### Analysis of $\Delta F/F$
+            $sampler --data_file=$datafile  \
+                     --constants_file=$constants \
+                     --output_folder=$folder \
+                     --column=$col \
+                     --tag=$tag \
+                     --prior=$prior \
+                     --rng_seed=233 \
+                     --niter=200 &
 
 The command to run the main analysis software is
 ```
