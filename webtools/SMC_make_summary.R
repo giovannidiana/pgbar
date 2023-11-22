@@ -80,20 +80,21 @@ args = commandArgs(trailingOnly=TRUE)
 #  keep
 
 wd=args[1]
-slice = as.numeric(args[2])
-tag = args[3]
-stimtype = args[4]
+datafilename=args[2]
+slice = as.numeric(args[3])
+tag = args[4]
+stimfile = args[5]
 
 setwd(wd)
 ssplit        = strsplit(wd,"/")
 prefix        = ssplit[[1]][length(ssplit[[1]])]
-data          = read.table(paste0(prefix,"_data_",stimtype,"_filter.dat"))
+data          = read.table(datafilename)
 pgas_samples  = paste0("traj_samples_",tag,".dat")
 paramfile     = paste0("param_samples_",tag,".dat")
 
 # set stimulations as spiketimes
-if (file.exists(paste0("stimtimes_",stimtype,".dat"))){
-    spikefile=paste0("stimtimes_",stimtype,".dat")
+if (file.exists(stimfile)){
+    spikefile=stimfile
 } else {
     spikefile=NULL
 }
@@ -102,7 +103,7 @@ make_df(data[,c(1,as.numeric(slice)+2)],
         pgas_samples,
         paramfile,
         spikefile=spikefile,
-        jsonfile=paste0("summary_",stimtype,"_",tag,".json"),
-        keep=as.numeric(args[5])) 
+        jsonfile=paste0("summary_",tag,".json"),
+        keep=as.numeric(args[6])) 
 
 
