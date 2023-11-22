@@ -1,0 +1,34 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1368" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>spike inference results</title>
+    
+    <meta name="author" content="Giovanni Diana" />
+    <meta data-date="03-06-2021" data-description="Web app for visualizing inference results" data-update="" />
+
+    <!-- Load d3.js -->
+    <script src = "https://d3js.org/d3.v6.min.js"></script>
+	<!-- Load plotly.js into the DOM -->
+	<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <!-- Add mathjax support -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script>
+
+
+</head>
+
+<body>
+    <div id="container">
+        <h2> Spike inference results </h2>
+        <input type="file" id=file accept=".json"> 
+        <div id="plot"></div>
+    </div>
+    <script src="import_df.js"> </script>
+</body>
+</html>
+
+
