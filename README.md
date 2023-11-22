@@ -178,34 +178,34 @@ data
 Each experiment folder is labeled as `LineScan-XXX` and contains a data file for each stimulation (single and poisson). The first column of each data file is the timestamp vector and the subsequent columns are the $\Delta F/F$ for all trials of the same soma or bouton. The file `stimtimes_STIM.dat` contains the stimulation time points in seconds while the file `stimtimes_STIM_counts.dat` is a binary vector with same length as the time steps of the recordings where the 1's matching the stimulation times.
 
 ## Example pipeline
-Here is an example of pipeline combining spike inference, summary and visualization on one of our datasets.
+Here is an example of pipeline combining spike inference, summary and visualization for one of our datasets. You can find the combined bash script in `pipelines/test`
 
-```{bash}
-#!/bin/bash
+1. First we run the inference algorithm:
+    ```{bash}
+    bin/analyze_data --data_file=data/soma/LineScan-11252022-0851-005_0/LineScan-11252022-0851-005_0_data_poisson.dat  \
+                     --constants_file=constants/constants_template.json \
+                     --output_folder=test \
+                     --column=1 \
+                     --tag=test \
+                     --niter=1000
+    ```
+2. Second we obtain the summary statistics from the posterior samples
 
-### Example pipeline
+    ```
+    rargs=(
+        test                                                                                      ## output folder
+        data/soma/LineScan-11252022-0851-005_0/LineScan-11252022-0851-005_0_data_poisson.dat \    ## dF/F
+        1 \                                                                                       ## column index
+        test \                                                                                    ## tag used
+        data/soma/LineScan-11252022-0851-005_0/stimtimes_poisson.dat \                            ## ground truth stimulations (if known)
+        20                                                                                        ## last samples to consider
+    )
 
-### (1) Inference
-bin/analyze_data --data_file=data/soma/LineScan-11252022-0851-005_0/LineScan-11252022-0851-005_0_data_poisson.dat  \
-				 --constants_file=constants/constants_template.json \
-				 --output_folder=test \
-				 --column=1 \
-				 --tag=test \
-				 --niter=1000
+    Rscript webtools/SMC_make_summary.R ${rargs[@]}
+    ```
 
+    which generates the file `summary_test.json`
 
-### (2) Extraction of statistical summaries
-rargs=(
-    test                                                                                      ## output folder
-    data/soma/LineScan-11252022-0851-005_0/LineScan-11252022-0851-005_0_data_poisson.dat \    ## dF/F
-    1 \                                                                                       ## column index
-    test \                                                                                    ## tag used
-    data/soma/LineScan-11252022-0851-005_0/stimtimes_poisson.dat \                            ## ground truth stimulations (if known)
-    20                                                                                        ## last samples to consider
-)
-
-Rscript webtools/SMC_make_summary.R ${rargs[@]}
-
-## (3) This R script generates a file summary_test.json in the test folder which can be imported through the javascript app
+3. Finally we can import this JSON file through the javascript app
 
 ```
