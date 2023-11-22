@@ -85,8 +85,7 @@ The main program to analyze $\Delta F/F$ traces is in `bin/analyze_data`
                              --column=<INT> \
                              --tag=<STRING> \
                              --prior=<FILE> \
-                             --rng_seed=<INT> \
-                             --niter=<INT> &
+                             --niter=<INT> [OPTIONS]
 
 ### Required input
 **--data_file [FILE]**
@@ -109,6 +108,11 @@ The main program to analyze $\Delta F/F$ traces is in `bin/analyze_data`
 
 > suffix to add to the result files
 
+**--niter [INT]**
+
+> number of iterations of the particle Gibbs
+
+
 ### Optional input
 
 **--prior [FILE]**
@@ -119,14 +123,9 @@ The main program to analyze $\Delta F/F$ traces is in `bin/analyze_data`
 
 > random seed
 
-**--niter [INT]**
-
-> number of iterations of the particle Gibbs
-
 **--continue**
 
 > uses data from previous run stored in the previous analysis
-
 
 ```
 
