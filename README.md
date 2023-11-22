@@ -126,5 +126,3 @@ The main program to analyze $\Delta F/F$ traces is in `bin/analyze_data`
 
 > uses data from previous run stored in the previous analysis
 
-```
-
