@@ -1,8 +1,3 @@
-library(MASS)
-library(ggplot2)
-library(gridExtra)
-library(cowplot)
-library(plotly)
 library(rjson)
 library(data.table)
 
@@ -60,19 +55,6 @@ make_df <- function(trace,pgas_samples,p_file,spikefile_init=NULL,spikefile=NULL
     write(jsondata,jsonfile)
 }
 
-validation_param <- function(paramfile,figurefile){
-    par=read.csv(paramfile)
-    h_Amax = ggplot(par)+ geom_histogram(aes(x=Amax)) + ylab("")
-    h_c0 = ggplot(par)+ geom_histogram(aes(x=c0)) + ylab("")
-    h_r1 = ggplot(par)+ geom_histogram(aes(x=r1)) + ylab("")
-    h_sigma2 = ggplot(par)+ geom_histogram(aes(x=sigma2)) + ylab("")
-    h_decay = ggplot(par)+geom_histogram(aes(x=decay_time)) + ylab("")
-    h_rise = ggplot(par)+geom_histogram(aes(x=rise_time)) + ylab("")
-
-    G=plot_grid(h_Amax,h_c0,h_sigma2,h_r1,h_decay,h_rise)
-    ggsave(figurefile,G)
-}
-
 args = commandArgs(trailingOnly=TRUE)
 #  wd args[1]
 #  spikefile
@@ -85,12 +67,9 @@ slice = as.numeric(args[3])
 tag = args[4]
 stimfile = args[5]
 
-setwd(wd)
-ssplit        = strsplit(wd,"/")
-prefix        = ssplit[[1]][length(ssplit[[1]])]
 data          = read.table(datafilename)
-pgas_samples  = paste0("traj_samples_",tag,".dat")
-paramfile     = paste0("param_samples_",tag,".dat")
+pgas_samples  = paste0(wd,"/traj_samples_",tag,".dat")
+paramfile     = paste0(wd,"/param_samples_",tag,".dat")
 
 # set stimulations as spiketimes
 if (file.exists(stimfile)){
@@ -99,11 +78,11 @@ if (file.exists(stimfile)){
     spikefile=NULL
 }
 
-make_df(data[,c(1,as.numeric(slice)+2)],
+make_df(data[,c(1,as.numeric(slice)+1)],
         pgas_samples,
         paramfile,
         spikefile=spikefile,
-        jsonfile=paste0("summary_",tag,".json"),
+        jsonfile=paste0(wd,"/summary_",tag,".json"),
         keep=as.numeric(args[6])) 
 
 

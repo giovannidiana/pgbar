@@ -180,7 +180,32 @@ Each experiment folder is labeled as `LineScan-XXX` and contains a data file for
 ## Example pipeline
 Here is an example of pipeline combining spike inference, summary and visualization on one of our datasets.
 
-First set as working folder
-```
-./analyze_data 
+```{bash}
+#!/bin/bash
+
+### Example pipeline
+
+### (1) Inference
+bin/analyze_data --data_file=data/soma/LineScan-11252022-0851-005_0/LineScan-11252022-0851-005_0_data_poisson.dat  \
+				 --constants_file=constants/constants_template.json \
+				 --output_folder=test \
+				 --column=1 \
+				 --tag=test \
+				 --niter=1000
+
+
+### (2) Extraction of statistical summaries
+rargs=(
+    test                                                                                      ## output folder
+    data/soma/LineScan-11252022-0851-005_0/LineScan-11252022-0851-005_0_data_poisson.dat \    ## dF/F
+    1 \                                                                                       ## column index
+    test \                                                                                    ## tag used
+    data/soma/LineScan-11252022-0851-005_0/stimtimes_poisson.dat \                            ## ground truth stimulations (if known)
+    20                                                                                        ## last samples to consider
+)
+
+Rscript webtools/SMC_make_summary.R ${rargs[@]}
+
+## (3) This R script generates a file summary_test.json in the test folder which can be imported through the javascript app
+
 ```

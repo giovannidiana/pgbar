@@ -8,16 +8,16 @@
     },
 
     "BM":{
-        "bm_sigma":1e-3
+        "bm_sigma":1e-2
     },
 
     "priors":{
-        "rise time":50,
-        "rise_time_sd":5,
-        "decay time":1500.0,
-        "decay_time_sd":2,
-        "Amax_prior_mean": 1.0,
-        "Amax_prior_sd": 0.2,
+        "rise time":3,
+        "rise_time_sd":1,
+        "decay time":80.0,
+        "decay_time_sd":10,
+        "Amax_prior_mean": 0.1,
+        "Amax_prior_sd": 0.1,
         "alpha rate 0": 1,
         "beta rate 0": 20,
         "alpha rate 1":10,
