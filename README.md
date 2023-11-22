@@ -117,7 +117,8 @@ The main program to analyze $\Delta F/F$ traces is in `bin/analyze_data`
 **--prior [FILE]**
 
 > Text file specifying parameters of the prior distributions with format 
-||||
+
+| | | |
 |---|---|---|
 | ciao | bla| uno |
 
