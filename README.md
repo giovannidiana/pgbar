@@ -152,7 +152,7 @@ Note that samples of bursting state, baseline, spike counts and calcium level ov
 For visualization purposes it is convenient to obtain summary statistics (means and standar deviation) over time for all the dynamical variables. We have prepared an R script to generate a JSON summary file that can be directly imported through our web interface described below.
 The R script `webtools/SMC_make_summary.R` takes samples from the `traj_sample` file and builds the summary file. The R script can be run from the command line with the following arguments:
 ```
-Rscript output_folder input_data column_index tag stimfile samples
+Rscript webtools/SMC_make_summary.R output_folder input_data column_index tag stimfile samples
 ```
 
 ## Visualization tools
