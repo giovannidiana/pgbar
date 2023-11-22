@@ -128,7 +128,7 @@ The main program to analyze $\Delta F/F$ traces is in `bin/analyze_data`
 >|r0| 1| 20|
 >|r1| 120| 4|
 >|w01 |10 |100|
->|w10 10| 100|
+>|w10| 10| 100|
 
 **--rng_seed [INT]**
 
@@ -141,3 +141,20 @@ The main program to analyze $\Delta F/F$ traces is in `bin/analyze_data`
 **--ground_truth [FILE]**
 
 > A file specifying the ground truth spikes as a single column with a number of rows matching the number of time steps in the main data file. This can be used to train parameters and update their priors.
+
+## Available data
+The folder `data/` contains linescan recordings of somas and boutons and it is organized as
+```
+data
+├── bouton
+│   └── LineScan-XXX
+│       ├── LineScan-XXX_data_STIM.dat
+│       ├── stimtimes_STIM_counts.dat
+│       └── stimtimes_STIM.dat
+│   ...
+└── soma
+        ├── LineScan-XXX_data_STIM.dat
+        ├── stimtimes_STIM_counts.dat
+        └── stimtimes_STIM.dat
+    ...
+```
