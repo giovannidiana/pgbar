@@ -178,7 +178,7 @@ data
 Each experiment folder is labeled as `LineScan-XXX` and contains a data file for each stimulation (single and poisson). The first column of each data file is the timestamp vector and the subsequent columns are the $\Delta F/F$ for all trials of the same soma or bouton. The file `stimtimes_STIM.dat` contains the stimulation time points in seconds while the file `stimtimes_STIM_counts.dat` is a binary vector with same length as the time steps of the recordings where the 1's matching the stimulation times.
 
 ## Example pipeline
-Here is an example of pipeline combining spike inference, summary and visualization for one of our datasets. You can find the combined bash script in `pipelines/test`
+Here is an example of pipeline combining spike inference, summary and visualization for one of our datasets. You can find the combined bash script in [`pipelines/test`](pipeline/test)
 
 1. First we run the inference algorithm:
     ```{bash}
