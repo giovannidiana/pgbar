@@ -3,8 +3,8 @@
 This repository contains:
 
 - The PGBAR software to infer spike times from fluorescence time series data. The method is described in our [preprint](https://doi.org/10.1101/2022.04.05.487201). We use a second order autoregressive model to describe calcium-dependent fluorescence with the addition of a time-dependent baseline to correct for low frequency modulation. Bayesian inference of spike times and autoregressive model parameters is done using the particle Gibbs method, which employs sequential Monte Carlo to estimate time-dependent variables of the model. PGBAR generates samples from the full posterior distribution of spike times and model parameters. 
-- Linescan data from cerebellar granule cells (soma and bouton recordings)
 - Visualization tools running on the browser
+- Linescan data from cerebellar granule cells (soma and bouton recordings)
 
 ## Dependencies
 * [GNU Scientific Libraries](https://www.gnu.org/software/gsl/)
@@ -142,11 +142,18 @@ The main program to analyze $\Delta F/F$ traces is in `bin/analyze_data`
 
 > A file specifying the ground truth spikes as a single column with a number of rows matching the number of time steps in the main data file. This can be used to train parameters and update their priors.
 
-### Output files
+## Output files
 PGBAR generates samples of the autoregressive model parameters and spike counts from the full posterior distribution. These samples are stored inside the specified output folder in CSV format 
 - `OUTPUT_FOLDER/param_samples_TAG.dat` 
 - `OUTPUT_FOLDER/traj_samples_TAG.dat`
 Note that samples of bursting state, baseline, spike counts and calcium level over time are chained in the file `traj_samples*` with the `index` column labeline each sample.
+
+## Summary statistics
+For visualization purposes it is convenient to obtain summary statistics (means and standar deviation) over time for all the dynamical variables. We have prepared an R script to generate a JSON summary file that can be directly imported through our web interface described below.
+The R script `webtools/SMC_make_summary.R` takes samples from the `traj_sample` file and builds the summary file. 
+
+## Visualization tools
+The html file `webtools/rInspectSamples.html` allows to visualize JSON summary files.
 
 ## Available data
 The folder `data/` contains linescan recordings of somas and boutons with single and poisson stimulation protocols. The folder is organized as follows:
@@ -167,5 +174,3 @@ data
 Each experiment folder is labeled as `LineScan-XXX` and contains a data file for each stimulation (single and poisson). The first column of each data file is the timestamp vector and the subsequent columns are the $\Delta F/F$ for all trials of the same soma or bouton. The file `stimtimes_STIM.dat` contains the stimulation time points in seconds while the file `stimtimes_STIM_counts.dat` is a binary vector with same length as the time steps of the recordings where the 1's matching the stimulation times.
 
 
-## Visualization tools
-The html file `webtools/rInspectSamples.html` allows to visualize summary 

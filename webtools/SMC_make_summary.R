@@ -6,8 +6,6 @@ library(plotly)
 library(rjson)
 library(data.table)
 
-settings = fromJSON(file="settings.json")
-
 make_df <- function(trace,pgas_samples,p_file,spikefile_init=NULL,spikefile=NULL,jsonfile=NULL,keep=20){
 
     MCMC.samples = fread(pgas_samples)
