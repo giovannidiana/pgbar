@@ -8,40 +8,40 @@
     },
 
     "BM":{
-        "bm_sigma":1e-2
+        "bm_sigma":3e-2
     },
 
     "priors":{
-        "rise time":3,
+        "rise time":3.7,
         "rise_time_sd":1,
         "decay time":80.0,
         "decay_time_sd":10,
-        "Amax_prior_mean": 0.1,
-        "Amax_prior_sd": 0.1,
+        "Amax_prior_mean": 0.07,
+        "Amax_prior_sd": 0.03,
         "alpha rate 0": 1,
         "beta rate 0": 20,
         "alpha rate 1":10,
         "beta rate 1": 10,
-        "c0_prior_sd": 1,
+        "c0_prior_sd": 0.01,
         "alpha w01": 10,
         "beta w01": 100,
         "alpha w10": 10,
         "beta w10": 100,
         "alpha sigma2": 2,
-        "beta sigma2": 2
+        "beta sigma2": 0.005
     },
 
     "proposals":{
-        "c0_proposal_sd":0.05,
-        "Amax_proposal_sd":0.05,
-        "decay_time_proposal_sd":10,
-        "rise_time_proposal_sd":1
+        "c0_proposal_sd":0.01,
+        "Amax_proposal_sd":0.005,
+        "decay_time_proposal_sd":2,
+        "rise_time_proposal_sd":0.5
     },
 
     "MCMC":{
-        "seed":2,
-        "niter":200,
-        "nparticles":500,
+        "seed":3,
+        "niter":1000,
+        "nparticles":2000,
         "SAMPLE_KINETICS":1,
         "SAMPLE_SPIKES":1,
         "MOVE_SPIKES":1,
