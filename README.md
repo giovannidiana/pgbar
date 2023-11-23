@@ -157,7 +157,7 @@ Rscript webtools/SMC_make_summary.R output_folder input_data column_index tag st
 
 ## Visualization tools
 The html file `webtools/rInspectSamples.html` allows to visualize JSON summary files.
-<p align="center"><img src="https://github.com/giovannidiana/pgbar/blob/main/docs/bits/webapp.gif"  width="85%"></p>
+<p align="center"><img src=docs/bits/webapp.gif"  width="85%"></p>
 
 ## Available data
 The folder `data/` contains linescan recordings of somas and boutons with single and poisson stimulation protocols. The folder is organized as follows:
