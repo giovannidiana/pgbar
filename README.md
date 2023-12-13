@@ -11,10 +11,23 @@ This repository contains:
 * [armadillo](http://arma.sourceforge.net/) (version >11)
 * [jsoncpp](https://github.com/open-source-parsers/jsoncpp)
 
-## Install
+## `cmake` install
 The main software for data analysis is written in `C++`. To compile it you need a C++ compiler in your system (e.g. g++ or clang).
-Once the necessary dependencies are present, the software can then be installed by simply run `make` from the command line.
+Once the necessary dependencies are present, the software can then be installed by creating a build folder and running `cmake`
 
+```
+mkdir build
+cd build
+cmake ..
+```
+
+Next, from the build folder we can compile PGBAR by running
+```
+make
+make install
+```
+
+`make install` will create an executable named `PGBAR` in the `bin` folder.
 
 ## Getting started
 
@@ -183,7 +196,7 @@ Here is an example of pipeline combining spike inference, summary and visualizat
 
 1. First we run the inference algorithm:
     ```{bash}
-    bin/analyze_data --data_file=data/soma/LineScan-11252022-0851-005_0/LineScan-11252022-0851-005_0_data_poisson.dat  \
+    bin/PGBAR --data_file=data/soma/LineScan-11252022-0851-005_0/LineScan-11252022-0851-005_0_data_poisson.dat  \
                      --constants_file=constants/constants_template.json \
                      --output_folder=test \
                      --column=1 \

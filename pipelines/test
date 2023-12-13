@@ -3,7 +3,7 @@
 ### Example pipeline
 
 ### (1) Inference
-bin/analyze_data --data_file=data/soma/LineScan-11252022-0851-005_0/LineScan-11252022-0851-005_0_data_poisson.dat  \
+bin/PGBAR --data_file=data/soma/LineScan-11252022-0851-005_0/LineScan-11252022-0851-005_0_data_poisson.dat  \
 				 --constants_file=constants/constants_template.json \
 				 --output_folder=test \
 				 --column=1 \
